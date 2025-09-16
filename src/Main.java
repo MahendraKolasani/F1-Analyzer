@@ -32,12 +32,20 @@ public class Main {
                 return;
             }
 
-            String constructorStandingsQueryText = "SELECT * FROM constructor_standings WHERE raceId=" + raceId;
+            String constructorStandingsQueryText = """
+                SELECT
+                    constructors.name AS constructor,
+                    constructor_standings.position AS position
+                FROM constructor_standings
+                LEFT JOIN  constructors
+                ON constructor_standings.constructorId = constructors.constructorId
+                WHERE raceId=
+            """ + raceId;
             ResultSet constructorStandingsRS = query(conn, constructorStandingsQueryText);
 
             if (constructorStandingsRS != null) {
                 while (constructorStandingsRS.next()) {
-                    System.out.print("constructor: " + constructorStandingsRS.getInt("constructorId"));
+                    System.out.print("constructor: " + constructorStandingsRS.getString("constructor"));
                     System.out.println(", position: " + constructorStandingsRS.getString("position"));
                 }
             } else {
