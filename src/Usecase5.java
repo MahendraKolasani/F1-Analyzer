@@ -1,18 +1,36 @@
 import java.sql.*;
 import java.util.Scanner;
 
-public class Main {
+public class Usecase5 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
+        System.out.print("Enter driver's forename:");
+        String fn = sc.nextLine();
+        System.out.print("Enter driver's surname:");
+        String sn = sc.nextLine();
         System.out.print("Enter the year: ");
         int year = sc.nextInt();
         System.out.print("Enter the round number: ");
         int round = sc.nextInt();
+        System.out.println("Driver name:" + fn + sn);
         System.out.println("Year:" + year);
         System.out.println("Round no:" + round);
 
         String url = "jdbc:sqlite:/home/mahikolasani/Documents/Projects/F1 Analyzer/F1";
         try (Connection conn = DriverManager.getConnection(url)) {
+            String driversQueryText = "SELECT driverId FROM drivers WHERE forename='" + fn + "' AND surname='" + sn + "'";
+            ResultSet did = query(conn, driversQueryText);
+            int did1 = 0;
+            if (did != null) {
+                if (did.next()) {
+                    System.out.println("driver id:" + did.getInt("driverId"));
+                    did1 = did.getInt("driverId");
+                }
+            } else {
+                System.out.println("Invalid year or round");
+                return;
+            }
+
             String racesQueryText = "SELECT * FROM races WHERE year=" + year + " AND round=" + round + " LIMIT 1";
             ResultSet racesRS = query(conn, racesQueryText);
 
@@ -24,32 +42,18 @@ public class Main {
                     System.out.println(racesRS.getString("date"));
                     raceId = racesRS.getInt("raceId");
                 }
-            } else {
-                System.out.println("Invalid year or round");
-                return;
             }
 
-            String constructorStandingsQueryText = """
-                SELECT
-                    constructors.name AS constructor,
-                    constructor_standings.position AS position
-                FROM constructor_standings
-                LEFT JOIN  constructors
-                ON constructor_standings.constructorId = constructors.constructorId
-                WHERE raceId=
-            """ + raceId;
-            ResultSet constructorStandingsRS = query(conn, constructorStandingsQueryText);
+            String qualifyQuery = "SELECT * FROM qualifying WHERE raceId='" + raceId + "' AND driverId='" + did1 + "'";
+            ResultSet qualifyRS = query(conn, qualifyQuery);
 
-            if (constructorStandingsRS != null) {
-                while (constructorStandingsRS.next()) {
-                    System.out.print("constructor: " + constructorStandingsRS.getString("constructor"));
-                    System.out.println(", position: " + constructorStandingsRS.getString("position"));
+            if (qualifyRS != null) {
+                if (qualifyRS.next()) {
+                    System.out.println( "Q1:" + qualifyRS.getString("q1"));
+                    System.out.println( "Q2:" + qualifyRS.getString("q2"));
+                    System.out.println( "Q3:" + qualifyRS.getString("q3"));
                 }
-            } else {
-                System.out.println("Invalid year or round");
-                return;
             }
-
 
         } catch (SQLException e) {
             System.out.println("Connection error: " + e.getMessage());
@@ -59,8 +63,6 @@ public class Main {
     static ResultSet query(Connection conn, String queryText) {
         try {
             if (conn != null) {
-                System.out.println("Connected to SQLite DB!");
-
                 Statement stmt = conn.createStatement();
                 return stmt.executeQuery(queryText);
 
@@ -71,4 +73,3 @@ public class Main {
         return null;
     }
 }
-
