@@ -1,1 +1,5 @@
 - A user should be able to see constructor standings by inputting year and round number
+- A user shouid be able to see time completion of a grand prix year by year by inputting name of the grand prix
+-A user shouid be able to see the podium of grand prix by inputting year and grand prix name
+- A user shouid be able to see a driver lap times over a race by inputting driver name and race details
+- A user shouid be able to see qualifying speeds from q1 to q3 by inputting driver details  and race details
