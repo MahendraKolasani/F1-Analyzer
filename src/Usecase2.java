@@ -1,7 +1,7 @@
 import java.sql.*;
 import java.util.Scanner;
 
-public class Main {
+public class Usecase2 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         System.out.print("Enter the year: ");
@@ -12,6 +12,7 @@ public class Main {
         System.out.println("Round no:" + round);
 
         String url = "jdbc:sqlite:/home/mahikolasani/Documents/Projects/F1 Analyzer/F1";
+
         try (Connection conn = DriverManager.getConnection(url)) {
             String racesQueryText = "SELECT * FROM races WHERE year=" + year + " AND round=" + round + " LIMIT 1";
             ResultSet racesRS = query(conn, racesQueryText);
@@ -29,27 +30,24 @@ public class Main {
                 return;
             }
 
-            String constructorStandingsQueryText = """
-                SELECT
-                    constructors.name AS constructor,
-                    constructor_standings.position AS position
-                FROM constructor_standings
-                LEFT JOIN  constructors
-                ON constructor_standings.constructorId = constructors.constructorId
-                WHERE raceId=
-                """ + raceId + " " + "ORDER BY position ASC";
-            ResultSet constructorStandingsRS = query(conn, constructorStandingsQueryText);
+            String driversQueryText = "SELECT * FROM results WHERE raceId='" + raceId + "'" + "ORDER BY CAST(position AS INTEGER)  ASC";
+            ResultSet did = query(conn, driversQueryText);
 
-            if (constructorStandingsRS != null) {
-                while (constructorStandingsRS.next()) {
-                    System.out.print("constructor: " + constructorStandingsRS.getString("constructor"));
-                    System.out.println(", position: " + constructorStandingsRS.getString("position"));
+            int did1 = 0;
+            did1 = did.getInt("driverId");
+            if (did != null) {
+                while (did.next()) {
+                    int position = did.getInt("position");
+                    String infQueryText = "SELECT * FROM drivers WHERE driverId='" + did.getInt("driverId") + "'";
+                    ResultSet inf = query(conn, infQueryText);
+
+                    System.out.print("Position:" + position);
+                    System.out.println(",Driver:" + inf.getString("driverRef"));
                 }
             } else {
                 System.out.println("Invalid year or round");
                 return;
             }
-
 
         } catch (SQLException e) {
             System.out.println("Connection error: " + e.getMessage());
@@ -59,8 +57,6 @@ public class Main {
     static ResultSet query(Connection conn, String queryText) {
         try {
             if (conn != null) {
-                System.out.println("Connected to SQLite DB!");
-
                 Statement stmt = conn.createStatement();
                 return stmt.executeQuery(queryText);
 
@@ -71,4 +67,5 @@ public class Main {
         return null;
     }
 }
+
 
