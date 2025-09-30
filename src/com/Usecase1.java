@@ -1,4 +1,4 @@
-package com.java;
+package com;
 import org.springframework.stereotype.Component;
 
 import java.sql.*;

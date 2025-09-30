@@ -1,38 +1,24 @@
-package com.java;
+package com;
+
+import org.springframework.stereotype.Component;
 
 import java.sql.*;
 import java.util.Scanner;
 
-public class Usecase4 {
-    public static void main(String[] args) {
+@Component
+public class Usecase2 {
+    public static void main() {
         Scanner sc = new Scanner(System.in);
-        System.out.print("Enter driver's forename:");
-        String fn = sc.nextLine();
-        System.out.print("Enter driver's surname:");
-        String sn = sc.nextLine();
         System.out.print("Enter the year: ");
         int year = sc.nextInt();
         System.out.print("Enter the round number: ");
         int round = sc.nextInt();
-        System.out.println("Driver name:" + fn + sn);
         System.out.println("Year:" + year);
         System.out.println("Round no:" + round);
 
         String url = "jdbc:sqlite:/home/mahikolasani/Documents/Projects/F1 Analyzer/F1";
-        try (Connection conn = DriverManager.getConnection(url)) {
-            String driversQueryText = "SELECT driverId FROM drivers WHERE forename='" + fn + "' AND surname='" + sn + "'";
-            ResultSet did = query(conn, driversQueryText);
-            int did1 = 0;
-            if (did != null) {
-                if (did.next()) {
-                    System.out.println("driver id:" + did.getInt("driverId"));
-                    did1 = did.getInt("driverId");
-                }
-            } else {
-                System.out.println("Invalid year or round");
-                return;
-            }
 
+        try (Connection conn = DriverManager.getConnection(url)) {
             String racesQueryText = "SELECT * FROM races WHERE year=" + year + " AND round=" + round + " LIMIT 1";
             ResultSet racesRS = query(conn, racesQueryText);
 
@@ -44,20 +30,31 @@ public class Usecase4 {
                     System.out.println(racesRS.getString("date"));
                     raceId = racesRS.getInt("raceId");
                 }
+            } else {
+                System.out.println("Invalid year or round");
+                return;
             }
 
-            String lapTimesQuery = "SELECT * FROM lap_times WHERE raceId='" + raceId + "'AND driverId='" + did1 + "'";
-            ResultSet lapRS = query(conn , lapTimesQuery);
+            String driversQueryText = "SELECT * FROM results WHERE raceId='" + raceId + "'" + "ORDER BY CAST(position AS INTEGER)  ASC";
+            ResultSet did = query(conn, driversQueryText);
 
-            if (lapRS != null){
-                while(lapRS.next()){
-                    System.out.print( "lap:" + lapRS.getInt("lap"));
-                    System.out.println( ",time:" + lapRS.getString("time"));
+            int did1 = 0;
+            did1 = did.getInt("driverId");
+            if (did != null) {
+                while (did.next()) {
+                    int position = did.getInt("position");
+                    String infQueryText = "SELECT * FROM drivers WHERE driverId='" + did.getInt("driverId") + "'";
+                    ResultSet inf = query(conn, infQueryText);
+
+                    System.out.print("Position:" + position);
+                    System.out.println(",Driver:" + inf.getString("driverRef"));
                 }
+            } else {
+                System.out.println("Invalid year or round");
+                return;
             }
 
-
-        }catch (SQLException e) {
+        } catch (SQLException e) {
             System.out.println("Connection error: " + e.getMessage());
         }
     }
@@ -75,3 +72,5 @@ public class Usecase4 {
         return null;
     }
 }
+
+

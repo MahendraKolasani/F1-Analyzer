@@ -1,4 +1,4 @@
-package com.java;
+ package com;
 
 import java.sql.*;
 import java.util.Scanner;
