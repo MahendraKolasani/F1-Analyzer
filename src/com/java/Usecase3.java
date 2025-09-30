@@ -1,3 +1,5 @@
+package com.java;
+
 import java.sql.*;
 import java.util.Scanner;
 

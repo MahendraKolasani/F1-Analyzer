@@ -1,8 +1,13 @@
+package com.java;
+import org.springframework.stereotype.Component;
+
 import java.sql.*;
 import java.util.Scanner;
 
+
+@Component
 public class Usecase1 {
-    public static void main(String[] args) {
+    public static void main() {
         Scanner sc = new Scanner(System.in);
         System.out.print("Enter the name of Grand Prix:");
         String name = sc.nextLine();
