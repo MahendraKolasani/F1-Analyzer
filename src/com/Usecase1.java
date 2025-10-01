@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 @Component
 public class Usecase1 {
-    public static void main() {
+    public static void main(String args[]) {
         Scanner sc = new Scanner(System.in);
         System.out.print("Enter the name of Grand Prix:");
         String name = sc.nextLine();

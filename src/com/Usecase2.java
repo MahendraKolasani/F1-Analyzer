@@ -1,13 +1,12 @@
 package com;
 
-import org.springframework.stereotype.Component;
 
 import java.sql.*;
 import java.util.Scanner;
 
-@Component
+
 public class Usecase2 {
-    public static void main() {
+    public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         System.out.print("Enter the year: ");
         int year = sc.nextInt();
@@ -35,7 +34,7 @@ public class Usecase2 {
                 return;
             }
 
-            String driversQueryText = "SELECT * FROM results WHERE raceId='" + raceId + "'" + "ORDER BY CAST(position AS INTEGER)  ASC";
+            String driversQueryText = "SELECT * FROM results WHERE raceId='" + raceId + "'" + "ORDER BY CAST(position AS INTEGER) ASC";
             ResultSet did = query(conn, driversQueryText);
 
             int did1 = 0;
