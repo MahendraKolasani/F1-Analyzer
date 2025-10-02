@@ -1,5 +1,6 @@
 package main;
 
+import main.Controller.RaceResultsController;
 import main.Controller.StandingsController;
 import main.Controller.DriverController;
 import org.springframework.boot.SpringApplication;
@@ -14,6 +15,7 @@ public class F1Application {
         ApplicationContext context = SpringApplication.run(F1Application.class, args);
         DriverController obj = context.getBean(DriverController.class);
         StandingsController obj1 = context.getBean(StandingsController.class);
+        RaceResultsController obj2 = context.getBean(RaceResultsController.class);
     }
 }
 

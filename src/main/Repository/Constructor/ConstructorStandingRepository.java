@@ -23,4 +23,8 @@ public interface ConstructorStandingRepository extends JpaRepository<Constructor
             "ORDER BY cs.position ASC")
     List<ConstructorPositionDTO> findPositionsByYearAndRound(@Param("year") int year,
                                                              @Param("round") int round);
+
+    @Query("SELECT MAX(r.round) FROM Race r WHERE r.year = :year")
+    Integer findMaxRoundByYear(@Param("year") int year);
+
 }
