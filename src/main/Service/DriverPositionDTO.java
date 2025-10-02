@@ -1,4 +1,4 @@
-package main.Repository.Driver;
+package main.Service;
 
 public class DriverPositionDTO {
 
@@ -15,10 +15,7 @@ public class DriverPositionDTO {
         return driverName;
     }
 
-    /**
-     * Custom Getter for the API response.
-     * Returns "DNF" if the raw position is 0, otherwise returns the position as a String.
-     */
+
     public String getPosition() {
         if (this.positionRaw == 0) {
             return "DNF";

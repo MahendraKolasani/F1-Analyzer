@@ -1,4 +1,4 @@
-package main.Repository.Constructor;
+package main.Repository.ConstructorStandings;
 
 import jakarta.persistence.*;
 import java.util.List;

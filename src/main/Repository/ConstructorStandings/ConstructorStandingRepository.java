@@ -1,6 +1,7 @@
-package main.Repository.Constructor;
+package main.Repository.ConstructorStandings;
 
 
+import main.Service.ConstructorPositionDTO;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -15,7 +16,7 @@ public interface ConstructorStandingRepository extends JpaRepository<Constructor
      * Retrieves a list of constructor names and their positions for a specific race.
      * Uses a JPQL Constructor Expression to project the joined result directly into the DTO.
      */
-    @Query("SELECT new main.Repository.Constructor.ConstructorPositionDTO(c.name, cs.position) " +
+    @Query("SELECT new main.Service.ConstructorPositionDTO(c.name, cs.position) " +
             "FROM ConstructorStanding cs " +
             "JOIN cs.constructor c " + // Join to Constructor entity (alias 'c')
             "JOIN cs.race r " +       // Join to Race entity (alias 'r')
@@ -26,5 +27,6 @@ public interface ConstructorStandingRepository extends JpaRepository<Constructor
 
     @Query("SELECT MAX(r.round) FROM Race r WHERE r.year = :year")
     Integer findMaxRoundByYear(@Param("year") int year);
+
 
 }

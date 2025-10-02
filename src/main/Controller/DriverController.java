@@ -1,7 +1,7 @@
 package main.Controller;
 
-import main.Repository.Driver.Driver;
-import main.Repository.Driver.DriverRepository;
+import main.Repository.DriverStandings.Driver;
+import main.Repository.DriverStandings.DriverRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,21 +16,21 @@ import java.util.Optional;
 public class DriverController {
 
     @Autowired
-    DriverRepository dr;
+    DriverRepository driverRepository;
 
     @GetMapping
     public List <Driver> getAll(){
-        return dr.findAll();
+        return driverRepository.findAll();
     }
 
     @GetMapping("/{Id}")
     public Optional<Driver> getById(@PathVariable Long Id)  {
-        return dr.findById(Id);
+        return driverRepository.findById(Id);
     }
 
     @GetMapping("/nationality/{nation}")
     public List<Driver> getDriversByNationality(@PathVariable String nation) {
-        return dr.findByNationality(nation);
+        return driverRepository.findByNationality(nation);
     }
 }
 

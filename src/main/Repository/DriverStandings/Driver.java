@@ -1,4 +1,4 @@
-package main.Repository.Driver;
+package main.Repository.DriverStandings;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;

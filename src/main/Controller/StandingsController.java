@@ -1,10 +1,10 @@
 package main.Controller;
 
 
-import main.Repository.Constructor.ConstructorPositionDTO;
-import main.Repository.Constructor.ConstructorStandingRepository;
-import main.Repository.Driver.DriverPositionDTO;
-import main.Repository.Driver.DriverStandingRepository;
+import main.Service.ConstructorPositionDTO;
+import main.Repository.ConstructorStandings.ConstructorStandingRepository;
+import main.Service.DriverPositionDTO;
+import main.Repository.DriverStandings.DriverStandingRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;

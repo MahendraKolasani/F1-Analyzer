@@ -1,8 +1,8 @@
 package com;
 
 import jakarta.persistence.*;
-import main.Repository.Driver.Driver;
-import main.Repository.Driver.Race;
+import main.Repository.DriverStandings.Driver;
+import main.Repository.RaceDetails.Race;
 
 @Entity
 @Table(name = "sprint_results")

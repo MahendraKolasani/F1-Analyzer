@@ -1,5 +1,6 @@
-package main.Repository.Driver;
+package main.Repository.DriverStandings;
 
+import main.Service.DriverPositionDTO;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -10,7 +11,7 @@ import java.util.List;
 @Repository
 public interface DriverStandingRepository extends JpaRepository<DriverStanding, Long> {
 
-    @Query("SELECT new main.Repository.Driver.DriverPositionDTO(CONCAT(d.forename, ' ', d.surname), ds.position) " +
+    @Query("SELECT new main.Service.DriverPositionDTO(CONCAT(d.forename, ' ', d.surname), ds.position) " +
             "FROM DriverStanding ds " +
             "JOIN ds.driver d " +
             "JOIN ds.race r " +
@@ -21,5 +22,6 @@ public interface DriverStandingRepository extends JpaRepository<DriverStanding, 
 
     @Query("SELECT MAX(r.round) FROM Race r WHERE r.year = :year")
     Integer findMaxRoundByYear(@Param("year") int year);
+
 
 }

@@ -1,4 +1,4 @@
-package main.Repository.Constructor;
+package main.Service;
 
 public class ConstructorPositionDTO {
     private String constructorName;
