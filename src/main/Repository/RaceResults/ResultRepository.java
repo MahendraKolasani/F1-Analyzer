@@ -20,7 +20,6 @@ public interface ResultRepository extends JpaRepository<Result, Long> {
             "ORDER BY CAST(r.position AS Long) ASC")
     List<DriverPositionDTO> findRacePositionsByRace(@Param("year") int year,
                                                     @Param("round") int round);
-
 }
 
 

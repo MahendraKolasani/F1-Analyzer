@@ -7,5 +7,8 @@ import org.springframework.data.repository.query.Param;
 public interface RaceRepository extends JpaRepository<Race, Long> {
     @Query("SELECT r FROM Race r WHERE r.year = :year AND r.round = :round")
     Race findRaceByYearAndRound(@Param("year") int year, @Param("round") int round);
+
+    @Query("SELECT MAX(r.round) FROM Race r WHERE r.year = :year")
+    Integer findMaxRoundByYear(@Param("year") int year);
 }
 

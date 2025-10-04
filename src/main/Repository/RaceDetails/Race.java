@@ -18,7 +18,7 @@ public class Race {
     private String name;
     private String date;
 
-    // We keep the ConstructorStanding list but remove the Circuit field entirely
+
     @OneToMany(mappedBy = "race")
     private List<ConstructorStanding> standings;
 
