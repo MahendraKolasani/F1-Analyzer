@@ -1,5 +1,6 @@
 package main.Controller;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.Positive;
@@ -27,6 +28,7 @@ public class RaceResultsController {
     }
 
     @GetMapping("/races/{year}/{round}")
+    @Tag(name = "Race results",description = "Race results of a particular race in a particular season")
     public RaceResultsResponse getMainRaceResults(
             @PathVariable @Min(value = 1950, message = "Year must be 1950 or later ") @Max(value = 2024, message = "Year 2024 is the latest season, we cannot provide future results") int year,
 

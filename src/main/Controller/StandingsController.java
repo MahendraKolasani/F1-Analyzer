@@ -1,6 +1,7 @@
 package main.Controller;
 
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.Positive;
@@ -30,6 +31,7 @@ public class StandingsController {
     }
 
     @GetMapping("/constructors/{year}/{round}")
+    @Tag(name = "Interim constructor standings",description = "Constructors Points table at a particular season and  particular round")
     public List<ConstructorPositionDTO> getConstructorStandings(
             @PathVariable @Min(value = 1950, message = "Year must be 1950 or later ") @Max(value = 2024, message = "Year 2024 is the latest season, we cannot provide future results") int year,
             @PathVariable @Positive(message = "round must be positive") int round) {
@@ -51,6 +53,7 @@ public class StandingsController {
     }
 
     @GetMapping("/constructors/{year}")
+    @Tag(name = "Final constructor standings",description = "Constructors Points table at end of the season")
     public List<ConstructorPositionDTO> getFinalConstructorStandings(
             @PathVariable @Min(value = 1950, message = "Year must be 1950 or later ") @Max(value = 2024, message = "Year 2024 is the latest season, we cannot provide future results") int year) {
 
@@ -64,6 +67,7 @@ public class StandingsController {
     }
 
     @GetMapping("/drivers/{year}/{round}")
+    @Tag(name = "Interim driver standings",description = "Drivers Points table at a particular season and  particular round")
     public List<DriverPositionDTO> getDriverStandings(
             @PathVariable @Min(value = 1950, message = "Year must be 1950 or later ") @Max(value = 2024, message = "Year 2024 is the latest season, we cannot provide future results") int year,
             @PathVariable @Positive(message = "round must be positive") int round) {
@@ -85,6 +89,7 @@ public class StandingsController {
     }
 
     @GetMapping("/drivers/{year}")
+    @Tag(name = "Final driver standings",description = "Drivers Points table at end of the season")
     public List<DriverPositionDTO> getFinalDriverStandings(
             @PathVariable @Min(value = 1950, message = "Year must be 1950 or later ") @Max(value = 2024, message = "Year 2024 is the latest season, we cannot provide future results") int year) {
 

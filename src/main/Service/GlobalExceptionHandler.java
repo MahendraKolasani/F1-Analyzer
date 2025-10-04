@@ -30,8 +30,9 @@ public class GlobalExceptionHandler {
                     .body("Path variable must be a valid integer!");
         }
         return ResponseEntity
-                .status(HttpStatus.BAD_REQUEST)
-                .body("Invalid value: " + ex.getValue());
-    }
+                    .status(HttpStatus.BAD_REQUEST)
+                    .body("Invalid value: " + ex.getValue());
+        }
+
 }
 
