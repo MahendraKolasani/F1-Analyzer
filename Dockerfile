@@ -14,7 +14,7 @@ FROM eclipse-temurin:17-jre-alpine
 WORKDIR /app
 
 # Copy the built JAR
-COPY --from=builder /app/target/*.jar app.jar
+COPY --from=builder /app/target/f1-analyzer-1.0-SNAPSHOT.jar app.jar
 
 # Run the application
 ENTRYPOINT ["java", "-jar", "app.jar"]
