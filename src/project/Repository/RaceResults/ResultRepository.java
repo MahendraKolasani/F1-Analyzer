@@ -1,6 +1,6 @@
-package main.Repository.RaceResults;
+package project.Repository.RaceResults;
 
-import main.Service.DriverPositionDTO;
+import project.Service.DriverPositionDTO;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

@@ -1,11 +1,11 @@
-package main.Controller;
+package project.Controller;
 
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Positive;
-import main.Repository.DriverStandings.Driver;
-import main.Repository.DriverStandings.DriverRepository;
+import project.Repository.DriverStandings.Driver;
+import project.Repository.DriverStandings.DriverRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;

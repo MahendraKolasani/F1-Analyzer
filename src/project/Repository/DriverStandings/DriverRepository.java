@@ -1,4 +1,4 @@
-package main.Repository.DriverStandings;
+package project.Repository.DriverStandings;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Component;

@@ -1,7 +1,7 @@
-package main.Repository.RaceDetails;
+package project.Repository.RaceDetails;
 
 import jakarta.persistence.*;
-import main.Repository.ConstructorStandings.ConstructorStanding;
+import project.Repository.ConstructorStandings.ConstructorStanding;
 
 import java.util.List;
 

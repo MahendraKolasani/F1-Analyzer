@@ -1,7 +1,7 @@
-package main.Repository.DriverStandings;
+package project.Repository.DriverStandings;
 
 import jakarta.persistence.*;
-import main.Repository.RaceDetails.Race;
+import project.Repository.RaceDetails.Race;
 
 @Entity
 @Table(name = "driver_standings")
