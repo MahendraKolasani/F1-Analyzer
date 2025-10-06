@@ -1,18 +1,16 @@
-package main.Controller;
+package project.Controller;
 
 
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.Positive;
-import main.Service.ConstructorPositionDTO;
-import main.Repository.ConstructorStandings.ConstructorStandingRepository;
-import main.Service.DriverPositionDTO;
-import main.Repository.DriverStandings.DriverStandingRepository;
-import org.springframework.http.HttpStatus;
+import project.Service.ConstructorPositionDTO;
+import project.Repository.ConstructorStandings.ConstructorStandingRepository;
+import project.Service.DriverPositionDTO;
+import project.Repository.DriverStandings.DriverStandingRepository;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 @Validated

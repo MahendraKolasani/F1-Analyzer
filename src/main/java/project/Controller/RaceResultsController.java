@@ -1,14 +1,14 @@
-package main.Controller;
+package project.Controller;
 
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.Positive;
-import main.Repository.RaceDetails.Race;
-import main.Repository.RaceDetails.RaceRepository;
-import main.Service.DriverPositionDTO;
-import main.Repository.RaceResults.ResultRepository;
-import main.Service.RaceResultsResponse;
+import project.Repository.RaceDetails.Race;
+import project.Repository.RaceDetails.RaceRepository;
+import project.Service.DriverPositionDTO;
+import project.Repository.RaceResults.ResultRepository;
+import project.Service.RaceResultsResponse;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 

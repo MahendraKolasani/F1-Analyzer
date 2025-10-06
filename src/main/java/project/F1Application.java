@@ -1,8 +1,8 @@
-package main;
+package project;
 
-import main.Controller.RaceResultsController;
-import main.Controller.StandingsController;
-import main.Controller.DriverController;
+import project.Controller.RaceResultsController;
+import project.Controller.StandingsController;
+import project.Controller.DriverController;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;

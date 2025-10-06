@@ -1,6 +1,4 @@
-package main.Service;
-
-import java.util.List;
+package project.Service;
 
 import java.util.List;
 

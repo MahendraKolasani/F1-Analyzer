@@ -1,8 +1,8 @@
-package main.Repository.ConstructorStandings;
+package project.Repository.ConstructorStandings;
 
 
 import jakarta.persistence.*;
-import main.Repository.RaceDetails.Race;
+import project.Repository.RaceDetails.Race;
 
 @Entity
 @Table(name = "constructor_standings")

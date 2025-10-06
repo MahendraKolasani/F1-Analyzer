@@ -1,22 +1,19 @@
-package com;
+package project.Repository.DriverStandings;
 
 import jakarta.persistence.*;
-import main.Repository.DriverStandings.Driver;
-import main.Repository.RaceDetails.Race;
+import project.Repository.RaceDetails.Race;
 
 @Entity
-@Table(name = "sprint_results")
-public class SprintResult {
+@Table(name = "driver_standings")
+public class DriverStanding {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "resultId")
-    private Long sprintResultId;
+    private Long standingId;
 
-    private Integer position;
+    private int position;
     private Integer points;
-    private Integer grid;
-    private Integer laps;
+    private Integer wins;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "raceId")
@@ -26,22 +23,22 @@ public class SprintResult {
     @JoinColumn(name = "driverId")
     private Driver driver;
 
-    public SprintResult() {
+    public DriverStanding() {
     }
 
-    public Long getSprintResultId() {
-        return sprintResultId;
+    public Long getStandingId() {
+        return standingId;
     }
 
-    public void setSprintResultId(Long sprintResultId) {
-        this.sprintResultId = sprintResultId;
+    public void setStandingId(Long standingId) {
+        this.standingId = standingId;
     }
 
-    public Integer getPosition() {
+    public int getPosition() {
         return position;
     }
 
-    public void setPosition(Integer position) {
+    public void setPosition(int position) {
         this.position = position;
     }
 
@@ -53,20 +50,12 @@ public class SprintResult {
         this.points = points;
     }
 
-    public Integer getGrid() {
-        return grid;
+    public Integer getWins() {
+        return wins;
     }
 
-    public void setGrid(Integer grid) {
-        this.grid = grid;
-    }
-
-    public Integer getLaps() {
-        return laps;
-    }
-
-    public void setLaps(Integer laps) {
-        this.laps = laps;
+    public void setWins(Integer wins) {
+        this.wins = wins;
     }
 
     public Race getRace() {
