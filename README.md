@@ -1,42 +1,36 @@
-# 🏎️ F1 Analyzer
+# F1 Analyzer
 
-A **Java Spring Boot**–based backend application that analyzes **Formula 1 racing data** and exposes insights through **RESTful APIs**.  
-The project focuses on clean backend architecture, data processing, and scalable API design.
-
----
-
-## 🧠 Problem Statement
-Formula 1 racing generates large volumes of structured data related to drivers, races, circuits, and constructors.  
-Analyzing this data manually or through static files limits usability and scalability.
-
-This project aims to:
-- Organize Formula 1 data efficiently
-- Provide meaningful analytical insights via APIs
-- Serve as a backend system for future dashboards or applications
+A backend Spring Boot application that exposes REST APIs for analyzing Formula 1 racing data such as drivers, races, constructors, and standings.
 
 ---
 
-## 💡 Solution Overview
-**F1 Analyzer** is built using **Spring Boot** and follows a layered architecture:
+## Why This Project Exists
 
-- Loads Formula 1 data into a database
-- Processes race and driver statistics
-- Exposes REST APIs for querying insights
-- Designed to be easily extendable and maintainable
+Formula 1 datasets are widely available, but they are often consumed as static CSV files or queried manually.  
+This approach does not scale well and makes it difficult to reuse the data across applications.
 
----
+The intent behind this project is to:
+- Convert raw Formula 1 data into a structured backend system
+- Expose analytical insights through reusable REST APIs
+- Demonstrate clean backend design using Java and Spring Boot
+- Serve as a foundation for dashboards, analytics tools, or further extensions
 
-## ⚙️ Tech Stack
-- **Language:** Java  
-- **Framework:** Spring Boot  
-- **Build Tool:** Maven  
-- **Architecture:** RESTful APIs  
-- **Database:** MySQL / H2  
-- **ORM:** Spring Data JPA (Hibernate)  
-- **Tools:** Git, GitHub, Postman  
+This project focuses on **backend engineering practices**, not UI or visualization.
 
 ---
 
-## 🏗️ Architecture Overview
-The application follows a standard **Spring Boot layered architecture**:
+## What This Project Does
+
+F1 Analyzer:
+- Loads Formula 1 domain data into a relational database
+- Models real-world entities such as drivers, races, circuits, and constructors
+- Provides REST endpoints to query this data
+- Separates responsibilities using a layered architecture
+- Allows easy extension for future analytical features
+
+---
+
+## How the Project Is Implemented
+
+The project follows a standard Spring Boot layered architecture to ensure clarity, maintainability, and scalability.
 
