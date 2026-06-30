@@ -1,4 +1,4 @@
-package project.Service;
+package project.Model;
 
 public class DriverPositionDTO {
 

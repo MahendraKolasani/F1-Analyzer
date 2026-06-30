@@ -1,4 +1,4 @@
-package project.Service;
+package project.Model;
 
 import jakarta.validation.ConstraintViolationException;
 import org.springframework.http.HttpStatus;

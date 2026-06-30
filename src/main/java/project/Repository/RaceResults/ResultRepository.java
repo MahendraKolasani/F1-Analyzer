@@ -1,6 +1,6 @@
 package project.Repository.RaceResults;
 
-import project.Service.DriverPositionDTO;
+import project.Model.DriverPositionDTO;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -11,7 +11,7 @@ import java.util.List;
 @Repository
 public interface ResultRepository extends JpaRepository<Result, Long> {
 
-    @Query("SELECT new project.Service.DriverPositionDTO(" +
+    @Query("SELECT new project.Model.DriverPositionDTO(" +
             "CONCAT(d.forename, ' ', d.surname), r.position) " +
             "FROM Result r " +
             "JOIN r.driver d " +
